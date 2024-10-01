@@ -19,10 +19,19 @@ public class Scoreboard
         return teamOneScore + "-" + teamTwoScore + "-" + activeTeam;
     }
 
-    public void recordPlay(int score)
-    {
+    public void recordPlay(int score) {
+        if (score > 0 && activeTeam == teamOne) {
+            teamOneScore += score;
+        } else if (score > 0 && activeTeam == teamTwo) {
+            teamTwoScore += score;
+        } else if (score == 0){
+            if (activeTeam == teamOne) {
+                activeTeam = teamTwo;
+            } else if (activeTeam == teamTwo) {
+                activeTeam = teamOne;
+            }
+        }
     }
-
 
 }
 
